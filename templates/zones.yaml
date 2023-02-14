@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "bind9.fullname" . }}-zones
+  labels:
+  {{- include "bind9.labels" . | nindent 4 }}
+data:
+  shanginn.ru: {{ .Values.zones.shanginnRu | quote }}
+  shanginn.io: {{ .Values.zones.shanginnIo | quote }}

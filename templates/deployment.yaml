@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "bind9.fullname" . }}-deployment
+  labels:
+  {{- include "bind9.labels" . | nindent 4 }}
+  annotations:
+    configmap.reloader.stakater.com/reload: "{{ include "bind9.fullname" . }}-configs,{{ include "bind9.fullname" . }}-zones"
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ include "bind9.fullname" . }}
+    {{- include "bind9.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "bind9.fullname" . }}
+      {{- include "bind9.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ .Values.kubernetesClusterDomain }}
+        image: {{ .Values.deployment.bind9.image.repository }}:{{ .Values.deployment.bind9.image.tag }}
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - nslookup foobar 127.0.0.1 &> /dev/null; echo ok
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+        name: bind9
+        ports:
+        - containerPort: 53
+          name: bind9tcp
+          protocol: TCP
+        - containerPort: 53
+          name: bind9udp
+          protocol: UDP
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - nslookup foobar 127.0.0.1 &> /dev/null; echo ok
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+        resources: {}
+        volumeMounts:
+        - mountPath: /etc/bind/named.conf.acl
+          name: configs-volume
+          subPath: named.conf.acl
+        - mountPath: /etc/bind/named.conf.local
+          name: configs-volume
+          subPath: named.conf.local
+        - mountPath: /etc/bind/named.conf.options
+          name: configs-volume
+          subPath: named.conf.options
+        - mountPath: /etc/bind/named.conf
+          name: configs-volume
+          subPath: named.conf
+        - mountPath: /etc/bind/zones/shanginn.ru
+          name: zones-volume
+          subPath: shanginn.ru
+        - mountPath: /etc/bind/zones/shanginn.io
+          name: zones-volume
+          subPath: shanginn.io
+      volumes:
+      - configMap:
+          name: {{ include "bind9.fullname" . }}-configs
+        name: configs-volume
+      - configMap:
+          name: {{ include "bind9.fullname" . }}-zones
+        name: zones-volume

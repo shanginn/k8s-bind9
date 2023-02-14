@@ -1,0 +1,132 @@
+deployment:
+  bind9:
+    image:
+      repository: ubuntu/bind9
+      tag: edge
+  replicas: 1
+
+kubernetesClusterDomain: cluster.local
+
+serviceAccount:
+  create: true
+  name: "bind9"
+
+service:
+  ports:
+    - name: bind9tcp
+      nodePort: 30053
+      port: 53
+      protocol: TCP
+      targetPort: bind9tcp
+    - name: bind9udp
+      nodePort: 30053
+      port: 53
+      protocol: UDP
+      targetPort: bind9udp
+  type: NodePort
+
+
+configs:
+  namedConf: |-
+    include "/etc/bind/named.conf.acl";
+    include "/etc/bind/named.conf.options";
+    include "/etc/bind/named.conf.local";
+    include "/etc/bind/named.conf.default-zones";
+  namedConfAcl: |-
+    acl "vpn" {
+        10.8.0.0/24;
+    };
+  namedConfLocal: |-
+    zone "shanginn.ru" IN {
+      type master;
+      file "/etc/bind/zones/shanginn.ru";
+      allow-update { none; };
+    };
+      
+    zone "shanginn.io" IN {
+      type master;
+      file "/etc/bind/zones/shanginn.io";
+      allow-update { none; };
+    };
+
+  namedConfOptions: |-
+    options {
+        listen-on port 53 { any; };
+        listen-on-v6 port 53 { any; };
+
+        directory "/var/cache/bind";
+
+        allow-query { any; };
+
+        /*
+        - If you are building an AUTHORITATIVE DNS server, do NOT enable recursion.
+        - If you are building a RECURSIVE (caching) DNS server, you need to enable
+         recursion.
+        - If your recursive DNS server has a public IP address, you MUST enable access
+         control to limit queries to your legitimate users. Failing to do so will
+         cause your server to become part of large scale DNS amplification
+         attacks. Implementing BCP38 within your network would greatly
+         reduce such attack surface
+        */
+    
+        recursion no;
+
+        // allow-recursion { vpn; localhost; localnets; };
+
+        dnssec-validation yes;
+        minimal-responses no;
+    };
+
+zones:
+  shanginnRu: |-
+    $TTL 24H
+    @     IN  SOA @       hostmaster.shanginn.ru. (
+      2   ; serial
+      3H  ; refresh
+      1H  ; retry
+      1W  ; expire
+      3H )    ; minimum
+
+    @     IN  NS          ns1.shanginn.ru.
+    @     IN  NS          ns2.shanginn.ru.
+    ns1   IN  A           185.69.54.37
+    ns2   IN  A           185.69.54.37
+    mail  IN  A           185.69.54.37
+    @     IN  A           185.199.108.153
+    @     IN  A           185.199.109.153
+    @     IN  A           185.199.110.153
+    @     IN  A           185.199.111.153
+    www   IN  CNAME       shanginn.github.io
+    bots  IN  A           185.69.54.37
+    @     IN  MX  10      mail.shanginn.ru.
+
+    ;Reverse lookup for Name Server
+    10    IN  PTR         ns1.shanginn.ru.
+
+    ;PTR Record IP address to HostName
+    100   IN  PTR         www.shanginn.ru.
+    150   IN  PTR         mail.shanginn.ru.
+
+  shanginnIo: |-
+    $TTL 24H
+    @     IN  SOA @       hostmaster.shanginn.io. (
+      2   ; serial
+      3H  ; refresh
+      1H  ; retry
+      1W  ; expire
+      3H )    ; minimum
+
+    @     IN  NS          ns1.shanginn.io.
+    @     IN  NS          ns2.shanginn.io.
+    ns1   IN  A           167.86.90.70
+    ns2   IN  A           167.86.90.70
+    mail  IN  A           167.86.90.70
+    bots  IN  A           167.86.90.70
+    @     IN  MX  10      mail.shanginn.io.
+
+    ;Reverse lookup for Name Server
+    10    IN  PTR         ns1.shanginn.io.
+
+    ;PTR Record IP address to HostName
+    100   IN  PTR         www.shanginn.io.
+    150   IN  PTR         mail.shanginn.io.
