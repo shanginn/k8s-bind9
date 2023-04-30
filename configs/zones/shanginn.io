@@ -6,15 +6,16 @@ $TTL 24H
   1W      ; expire
   3H )    ; minimum
 
-@         IN  NS          ns1.shanginn.io.
-@         IN  NS          ns2.shanginn.io.
+@          IN  NS          ns1.shanginn.io.
+@          IN  NS          ns2.shanginn.io.
 
-@         IN  A           167.86.90.70
-ns1       IN  A           167.86.90.70
-ns2       IN  A           167.86.90.70
-mail      IN  A           167.86.90.70
-bots      IN  A           167.86.90.70
-temporal  IN  A        167.86.90.70
+@          IN  A           167.86.90.70
+ns1        IN  A           167.86.90.70
+ns2        IN  A           167.86.90.70
+mail       IN  A           167.86.90.70
+bots       IN  A           167.86.90.70
+temporal   IN  A           167.86.90.70
+surrealdb  IN  A           167.86.90.70
 
 @         IN  MX  10      mail.shanginn.io.
 
