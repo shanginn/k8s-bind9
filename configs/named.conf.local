@@ -20,6 +20,12 @@ zone "shanginn.io" IN {
 
 zone "xn--80alfarbic0a3a.xn--p1ai" IN {
     type master;
-    file "/etc/bind/zones/минижурнал.рф";
+    file "/etc/bind/zones/мminijurnal.rf";
+    allow-update { none; };
+}
+
+zone "xn--b1abcbftdmxceabz.xn--p1ai" IN {
+    type master;
+    file "/etc/bind/zones/dorogoidnevnik.rf";
     allow-update { none; };
 }
