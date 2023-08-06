@@ -1,0 +1,16 @@
+$TTL 24H
+@     IN  SOA @       hostmaster.xn--b1abcbftdmxceabz.xn--p1ai. (
+  2   ; serial
+  3H  ; refresh
+  1H  ; retry
+  1W  ; expire
+  3H )    ; minimum
+
+@     IN  A           167.86.90.70
+
+;Reverse lookup for Name Server
+10    IN  PTR         ns1.xn--b1abcbftdmxceabz.xn--p1ai.
+
+;PTR Record IP address to HostName
+100   IN  PTR         www.xn--b1abcbftdmxceabz.xn--p1ai.
+150   IN  PTR         mail.xn--b1abcbftdmxceabz.xn--p1ai.

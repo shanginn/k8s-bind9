@@ -17,3 +17,9 @@ zone "shanginn.io" IN {
     file "/etc/bind/zones/shanginn.io";
     allow-update { none; };
 };
+
+zone "xn--80alfarbic0a3a.xn--p1ai" IN {
+    type master;
+    file "/etc/bind/zones/минижурнал.рф";
+    allow-update { none; };
+}
