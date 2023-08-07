@@ -61,12 +61,12 @@ spec:
         - mountPath: /etc/bind/named.conf
           name: configs-volume
           subPath: named.conf
-        - mountPath: /etc/bind/zones/shanginn.ru
-          name: zones-volume
-          subPath: shanginn.ru
-        - mountPath: /etc/bind/zones/shanginn.io
-          name: zones-volume
-          subPath: shanginn.io
+        {{- $zones := .Files.Glob .Values.configs.zonesGlob }}
+        {{- range $zone, $content := $zones }}
+        - name: zones-volume
+          mountPath: /etc/bind/zones/{{ $zone | trimPrefix "configs/zones/" }}
+          subPath: {{ $zone | trimPrefix "configs/zones/" }}
+        {{- end }}
       volumes:
       - configMap:
           name: {{ include "bind9.fullname" . }}-configs
