@@ -1,16 +1,20 @@
 $TTL 24H
-@     IN  SOA @       hostmaster.xn--80alfarbic0a3a.xn--p1ai. (
+@     IN  SOA @       hostmaster.xn--80afga3bt4c.xn--p1ai. (
   2   ; serial
   3H  ; refresh
   1H  ; retry
   1W  ; expire
   3H )    ; minimum
 
+; Specify the nameserver
+@     IN  NS          ns1.shanginn.io.
+
+; Map the domain to an IP address
 @     IN  A           167.86.90.70
 
-;Reverse lookup for Name Server
-10    IN  PTR         ns1.shanginn.io.
+; Map 'www' and 'mail' subdomains to the same IP address
+www   IN  A           167.86.90.70
+mail  IN  A           167.86.90.70
 
-;PTR Record IP address to HostName
-100   IN  PTR         www.xn--80afga3bt4c.xn--p1ai.
-150   IN  PTR         mail.xn--80afga3bt4c.xn--p1ai.
+; Set the IP address for the nameserver
+ns1   IN  A           167.86.90.70
