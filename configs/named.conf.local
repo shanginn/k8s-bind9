@@ -29,3 +29,9 @@ zone "xn--b1abcbftdmxceabz.xn--p1ai" IN {
     file "/etc/bind/zones/dorogoidnevnik.rf";
     allow-update { none; };
 };
+
+zone "xn--80afga3bt4c.xn--p1ai" IN {
+    type master;
+    file "/etc/bind/zones/generach.rf";
+    allow-update { none; };
+};
