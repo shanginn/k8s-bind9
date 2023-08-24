@@ -35,3 +35,9 @@ zone "xn--80afga3bt4c.xn--p1ai" IN {
     file "/etc/bind/zones/generach.rf";
     allow-update { none; };
 };
+
+zone "generach.ru" IN {
+    type master;
+    file "/etc/bind/zones/generach.ru";
+    allow-update { none; };
+};
