@@ -28,4 +28,4 @@ jobs:
           chmod 600 ~/.kube/config
 
       - name: Deploy app
-        run: helm upgrade --kube-context=bind9-server --install --namespace=bind9 -f values.yaml bind9 .
+        run: helm upgrade -f values.yaml bind9 .
