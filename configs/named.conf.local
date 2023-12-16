@@ -41,3 +41,15 @@ zone "generach.ru" IN {
     file "/etc/bind/zones/generach.ru";
     allow-update { none; };
 };
+
+zone "xn--e1afqnbgc.xn--p1ai" IN {
+    type master;
+    file "/etc/bind/zones/sistent.rf";
+    allow-update { none; };
+};
+
+zone "sistent.ru" IN {
+    type master;
+    file "/etc/bind/zones/sistent.ru";
+    allow-update { none; };
+};
