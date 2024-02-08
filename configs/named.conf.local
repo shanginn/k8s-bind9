@@ -53,3 +53,15 @@ zone "sistent.ru" IN {
     file "/etc/bind/zones/sistent.ru";
     allow-update { none; };
 };
+
+zone "xn--80ahnllf1ado3f.xn--p1ai" IN {
+    type master;
+    file "/etc/bind/zones/udalitfon.rf";
+    allow-update { none; };
+};
+
+zone "xn--80aakfartrcj1ct.xn--p1ai" IN {
+    type master;
+    file "/etc/bind/zones/udaleniefona.rf";
+    allow-update { none; };
+};
