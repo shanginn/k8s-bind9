@@ -65,3 +65,9 @@ zone "xn--80aakfartrcj1ct.xn--p1ai" IN {
     file "/etc/bind/zones/udaleniefona.rf";
     allow-update { none; };
 };
+
+zone "mystaro.ru" IN {
+    type master;
+    file "/etc/bind/zones/mystaro.ru";
+    allow-update { none; };
+};
