@@ -8,15 +8,15 @@ $TTL 24H
 
 @     IN  NS          ns1.shanginn.ru.
 @     IN  NS          ns2.shanginn.ru.
-ns1   IN  A           185.69.54.37
-ns2   IN  A           185.69.54.37
-mail  IN  A           185.69.54.37
+ns1   IN  A           167.86.90.70
+ns2   IN  A           167.86.90.70
+mail  IN  A           167.86.90.70
 @     IN  A           185.199.108.153
 @     IN  A           185.199.109.153
 @     IN  A           185.199.110.153
 @     IN  A           185.199.111.153
 www   IN  CNAME       shanginn.github.io
-bots  IN  A           185.69.54.37
+bots  IN  A           167.86.90.70
 @     IN  MX  10      mail.shanginn.ru.
 
 ;Reverse lookup for Name Server
