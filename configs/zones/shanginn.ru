@@ -1,6 +1,6 @@
 $TTL 24H
 @     IN  SOA @       hostmaster.shanginn.ru. (
-  2   ; serial
+  3   ; serial
   3H  ; refresh
   1H  ; retry
   1W  ; expire
