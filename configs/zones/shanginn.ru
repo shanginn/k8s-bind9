@@ -15,7 +15,7 @@ mail  IN  A           167.86.90.70
 @     IN  A           185.199.109.153
 @     IN  A           185.199.110.153
 @     IN  A           185.199.111.153
-www   IN  CNAME       shanginn.github.io.
+@     IN  ALIAS       shanginn.github.io.
 bots  IN  A           167.86.90.70
 @     IN  MX  10      mail.shanginn.ru.
 
