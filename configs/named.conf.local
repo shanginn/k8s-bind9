@@ -71,3 +71,9 @@ zone "mystaro.ru" IN {
     file "/etc/bind/zones/mystaro.ru";
     allow-update { none; };
 };
+
+zone "xn--80ajijindid5e.xn--p1ai" IN {
+    type master;
+    file "/etc/bind/zones/primerochka.rf";
+    allow-update { none; };
+};
