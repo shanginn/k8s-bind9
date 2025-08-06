@@ -77,3 +77,9 @@ zone "xn--80ajijindid5e.xn--p1ai" IN {
     file "/etc/bind/zones/primerochka.rf";
     allow-update { none; };
 };
+
+zone "itaisolutions.ru" IN {
+    type master;
+    file "/etc/bind/zones/itaisolutions.ru";
+    allow-update { none; };
+};
