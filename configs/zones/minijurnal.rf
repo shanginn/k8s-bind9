@@ -6,7 +6,7 @@ $TTL 24H
   1W  ; expire
   3H )    ; minimum
 
-@     IN  A           167.86.90.70
+@     IN  A           84.247.177.201
 
 ;Reverse lookup for Name Server
 10    IN  PTR         ns1.shanginn.io.

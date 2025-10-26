@@ -9,10 +9,10 @@ $TTL 24H
 @          IN  NS          ns1.shanginn.io.
 @          IN  NS          ns2.shanginn.io.
 
-@          IN  A           167.86.90.70
-ns1        IN  A           167.86.90.70
-ns2        IN  A           167.86.90.70
-*          IN  A           167.86.90.70
+@          IN  A           84.247.177.201
+ns1        IN  A           84.247.177.201
+ns2        IN  A           84.247.177.201
+*          IN  A           84.247.177.201
 
 @                  IN  MX  10      mail.shanginn.io.
 
