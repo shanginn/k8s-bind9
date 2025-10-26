@@ -11,7 +11,7 @@ $TTL 24H
 
 @          IN  A           84.247.177.201
 ns1        IN  A           84.247.177.201
-ns2        IN  A           84.247.177.201
+ns2        IN  A           167.86.90.70
 *          IN  A           84.247.177.201
 
 @                  IN  MX  10      mail.shanginn.io.
