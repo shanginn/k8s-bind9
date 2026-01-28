@@ -83,3 +83,27 @@ zone "itaisolutions.ru" IN {
     file "/etc/bind/zones/itaisolutions.ru";
     allow-update { none; };
 };
+
+zone "vibesites.ru" IN {
+    type master;
+    file "/etc/bind/zones/vibesites.ru";
+    allow-update { none; };
+};
+
+zone "xn--80aacc0bc7ayl4g.xn--p1ai" IN {
+    type master;
+    file "/etc/bind/zones/vibesites.rf";
+    allow-update { none; };
+};
+
+zone "flowerswork.ru" IN {
+    type master;
+    file "/etc/bind/zones/flowerswork.ru";
+    allow-update { none; };
+};
+
+zone "flowerworks.ru" IN {
+    type master;
+    file "/etc/bind/zones/flowerworks.ru";
+    allow-update { none; };
+};

@@ -1,6 +1,6 @@
 $TTL 24H
-@     IN  SOA @       hostmaster.itaisolutions.ru. (
-  2   ; serial
+@     IN  SOA @       hostmaster.flowerswork.ru. (
+  1   ; serial
   3H  ; refresh
   1H  ; retry
   1W  ; expire
