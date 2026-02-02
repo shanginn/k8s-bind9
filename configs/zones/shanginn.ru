@@ -11,9 +11,9 @@ $TTL 24H
 @     IN  NS          ns1.shanginn.ru.
 @     IN  NS          ns2.shanginn.ru.
 
-ns1   IN  A           84.247.177.201
-ns2   IN  A           84.247.177.201
-mail  IN  A           84.247.177.201
+ns1   IN  A           185.221.212.224
+ns2   IN  A           185.221.212.224
+mail  IN  A           185.221.212.224
 
 @     IN  A           185.199.108.153
 @     IN  A           185.199.109.153

@@ -11,6 +11,7 @@ $TTL 24H
 
 ; Map the domain to an IP address
 @     IN  A           185.221.212.224
+*     IN  A           185.221.212.224
 
 ; Map 'www' and 'mail' subdomains to the same IP address
 www   IN  A           185.221.212.224
