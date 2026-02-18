@@ -107,3 +107,9 @@ zone "flowerworks.ru" IN {
     file "/etc/bind/zones/flowerworks.ru";
     allow-update { none; };
 };
+
+zone "xn--80aafk8cdei3c.xn--p1ai" IN {
+    type master;
+    file "/etc/bind/zones/restavrach.rf";
+    allow-update { none; };
+};
