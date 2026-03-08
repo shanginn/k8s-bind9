@@ -1,6 +1,6 @@
 $TTL 24H
 @     IN  SOA @       hostmaster.itaisolutions.ru. (
-  2   ; serial
+  3   ; serial
   3H  ; refresh
   1H  ; retry
   1W  ; expire
@@ -8,6 +8,7 @@ $TTL 24H
 
 ; Specify the nameserver
 @     IN  NS          ns1.shanginn.io.
+@     IN  NS          ns2.shanginn.io.
 
 ; Map the domain to an IP address
 @     IN  A           185.221.212.224
