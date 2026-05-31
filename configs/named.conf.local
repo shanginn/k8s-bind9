@@ -119,3 +119,9 @@ zone "shanghaiauto.ru" IN {
     file "/etc/bind/zones/shanghaiauto.ru";
     allow-update { none; };
 };
+
+zone "aufstaff.ru" IN {
+    type master;
+    file "/etc/bind/zones/aufstaff.ru";
+    allow-update { none; };
+};
